@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Портфолио</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0a0c12;
+            font-family: 'Inter', sans-serif;
+            color: #eef2ff;
+            line-height: 1.5;
+        }
+
+        .mono {
+            font-family: 'IBM Plex Mono', monospace;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 28px;
+        }
+
+        .top-header {
+            border-bottom: 2px solid #1f242f;
+            background: #06080c;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            padding: 20px 28px;
+            gap: 20px;
+        }
+
+        .logo-mark {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            background: linear-gradient(130deg, #c0ff00, #0aefff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-family: 'IBM Plex Mono', monospace;
+        }
+
+        .nav-links-dark {
+            display: flex;
+            gap: 1.8rem;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        .nav-links-dark a {
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.85rem;
+            letter-spacing: 0.3px;
+            color: #b9c3d4;
+            transition: 0.2s;
+            border-bottom: 1px solid transparent;
+            padding-bottom: 4px;
+        }
+
+        .nav-links-dark a:hover {
+            color: #c0ff00;
+            border-bottom-color: #c0ff00;
+        }
+
+
+        .hero-dark {
+            padding: 80px 0 70px;
+            background: #0a0c12;
+            border-bottom: 1px solid #1e242c;
+        }
+
+        .hero-grid-dark {
+            display: flex;
+            gap: 60px;
+            align-items: center;
+            flex-wrap: wrap-reverse;
+        }
+
+        .hero-content h4 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            color: #6cffb0;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #ffffff, #c0ff00);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 16px;
+        }
+
+        .hero-desc {
+            font-size: 1rem;
+            color: #9aa4bf;
+            max-width: 500px;
+            margin: 20px 0;
+        }
+
+        .info-tag {
+            display: inline-block;
+            background: #11161f;
+            padding: 6px 16px;
+            border-left: 4px solid #c0ff00;
+            font-family: monospace;
+            font-size: 0.85rem;
+            margin-top: 12px;
+        }
+
+        .hero-photo-side {
+            width: 260px;
+            height: 260px;
+            object-fit: cover;
+            filter: grayscale(40%) contrast(1.1);
+            border-radius: 50%;
+            background: #1e2a3a;
+        }
+
+        .section-dark {
+            padding: 70px 0;
+            border-bottom: 1px solid #171d26;
+        }
+
+        .section-title-dark {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            margin-bottom: 48px;
+            display: inline-block;
+            background: #0f131c;
+            padding: 0 12px 0 0;
+            border-left: 8px solid #c0ff00;
+            padding-left: 20px;
+        }
+
+        .comp-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 12px;
+        }
+
+        .comp-line {
+            background: #0e121c;
+            padding: 14px 18px;
+            border-left: 2px solid #2f3b4c;
+            font-size: 0.85rem;
+            transition: 0.15s;
+        }
+
+        .comp-line strong {
+            color: #c0ff00;
+            font-weight: 600;
+            margin-right: 12px;
+            font-family: monospace;
+        }
+
+        .comp-line:hover {
+            border-left-color: #c0ff00;
+            background: #111722;
+            transform: translateX(3px);
+        }
+
+        .split-zone {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .info-block {
+            flex: 1;
+            background: #0e121c;
+            padding: 32px 30px;
+            border: 1px solid #232a36;
+        }
+
+        .info-block h3 {
+            font-size: 1.5rem;
+            margin-bottom: 24px;
+            font-weight: 600;
+        }
+
+        .custom-list {
+            list-style: none;
+        }
+
+        .custom-list li {
+            margin-bottom: 14px;
+            padding-left: 24px;
+            position: relative;
+            font-size: 0.9rem;
+        }
+
+        .custom-list li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #c0ff00;
+        }
+
+        .badges-wrap {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .chip {
+            background: #11161f;
+            padding: 12px 26px;
+            font-weight: 500;
+            border: 1px solid #2a3340;
+            font-size: 0.9rem;
+        }
+
+        .projects-row-dark {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .project-tile {
+            background: #0e121c;
+            border: 1px solid #202732;
+            padding: 24px 28px;
+            flex: 1 1 260px;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+
+        .project-tile h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #c0ff00;
+            font-family: monospace;
+            margin-bottom: 8px;
+        }
+
+        .project-tile p {
+            color: #9ba3b5;
+            font-size: 0.85rem;
+        }
+
+        .project-tile:hover {
+            background: #131a24;
+            border-color: #c0ff00;
+            transform: translateY(-2px);
+        }
+
+        .grid-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 28px;
+        }
+
+        .gallery-card-dark {
+            background: #0d111a;
+            border: 1px solid #212835;
+            transition: 0.2s;
+        }
+
+        .gallery-card-dark .img-area {
+            height: 170px;
+            background: #020408;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .gallery-card-dark img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.85;
+        }
+
+        .gallery-card-dark p {
+            padding: 16px 14px;
+            font-size: 0.8rem;
+            font-weight: 450;
+            text-align: center;
+            border-top: 1px solid #1e2630;
+        }
+
+        .gallery-card-dark:hover {
+            border-color: #5f7f4e;
+            background: #10161f;
+        }
+
+        .citizen-section {
+            background: #070b12;
+            padding: 48px 40px;
+            margin-top: 20px;
+            border-left: 8px solid #c0ff00;
+        }
+
+        .citizen-section p {
+            margin-bottom: 18px;
+            font-size: 0.95rem;
+            color: #cfdbf5;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            font-size: 0.75rem;
+            color: #6a6f7c;
+            border-top: 1px solid #151e28;
+            margin-top: 30px;
+        }
+
+        @media (max-width: 780px) {
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+
+            .header-flex {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .section-title-dark {
+                font-size: 1.7rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="top-header">
+        <div class="header-flex container">
+            <ul class="nav-links-dark">
+                <li><a href="#comp">Компетенции</a></li>
+                <li><a href="#know">Знания</a></li>
+                <li><a href="#qual">О себе</a></li>
+                <li><a href="#works">Работы</a></li>
+                <li><a href="#exp">Опыт</a></li>
+                <li><a href="#achieve">Достижения</a></li>
+                <li><a href="#docs">Документы</a></li>
+                <li><a href="#citizen">Гражданин</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <main>
+        <div class="hero-dark">
+            <div class="container hero-grid-dark">
+                <div class="hero-content">
+                    <h4>ПОРТФОЛИО СТУДЕНТА</h4>
+                    <h1>Валиев<br>Айнур</h1>
+                    <div class="hero-desc">09.02.07 Информационные системы и программирование | ГАПОУ СО «ЕКТС»</div>
+                    <div class="info-tag">группа ПР-42</div>
+                </div>
+                <div>
+                    <img src="photo.jpg" alt="Фото" class="hero-photo-side">
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <section id="comp" class="section-dark">
+                <h2 class="section-title-dark">Перечень компетенций</h2>
+                <div class="comp-grid">
+                    <div class="comp-line"><strong>ОК 01</strong> Выбирать способы решения задач профессиональной
+                        деятельности, применительно к различным контекстам.</div>
+                    <div class="comp-line"><strong>ОК 02</strong> Осуществлять поиск, анализ и интерпретацию информации,
+                        необходимой для выполнения задач.</div>
+                    <div class="comp-line"><strong>ОК 03</strong> Планировать и реализовывать собственное
+                        профессиональное и личностное развитие.</div>
+                    <div class="comp-line"><strong>ОК 04</strong> Эффективно взаимодействовать в коллективе и команде.
+                    </div>
+                    <div class="comp-line"><strong>ОК 05</strong> Устная и письменная коммуникация на государственном
+                        языке РФ.</div>
+                    <div class="comp-line"><strong>ОК 06</strong> Проявлять гражданско-патриотическую позицию,
+                        демонстрировать осознанное поведение на основе традиционных ценностей.</div>
+                    <div class="comp-line"><strong>ОК 07</strong> Содействовать сохранению окружающей среды,
+                        ресурсосбережению.</div>
+                    <div class="comp-line"><strong>ОК 08</strong> Использовать средства физической культуры для
+                        укрепления здоровья.</div>
+                    <div class="comp-line"><strong>ОК 09</strong> Пользоваться профессиональной документацией на
+                        государственном и иностранных языках.</div>
+                    <div class="comp-line"><strong>ПК 1.1</strong> Формировать алгоритмы разработки программных модулей
+                        по ТЗ.</div>
+                    <div class="comp-line"><strong>ПК 1.2</strong> Разрабатывать программные модули в соответствии с ТЗ.
+                    </div>
+                    <div class="comp-line"><strong>ПК 1.3</strong> Выполнять отладку с использованием специализированных
+                        средств.</div>
+                    <div class="comp-line"><strong>ПК 1.4</strong> Выполнять тестирование программных модулей.</div>
+                    <div class="comp-line"><strong>ПК 1.5</strong> Осуществлять рефакторинг и оптимизацию кода.</div>
+                    <div class="comp-line"><strong>ПК 1.6</strong> Разрабатывать модули для мобильных платформ.</div>
+                    <div class="comp-line"><strong>ПК 2.1</strong> Разрабатывать требования к программным модулям.</div>
+                    <div class="comp-line"><strong>ПК 2.2</strong> Выполнять интеграцию модулей в ПО.</div>
+                    <div class="comp-line"><strong>ПК 2.3</strong> Отладка модуля с использованием спецсредств.</div>
+                    <div class="comp-line"><strong>ПК 2.4</strong> Разработка тестовых наборов и сценариев.</div>
+                    <div class="comp-line"><strong>ПК 2.5</strong> Инспектирование компонентов на соответствие
+                        стандартам кодирования.</div>
+                    <div class="comp-line"><strong>ПК 4.1</strong> Инсталляция, настройка и обслуживание ПО.</div>
+                    <div class="comp-line"><strong>ПК 4.2</strong> Измерение эксплуатационных характеристик ПО.</div>
+                    <div class="comp-line"><strong>ПК 4.3</strong> Модификация компонентов ПО по требованиям заказчика.
+                    </div>
+                    <div class="comp-line"><strong>ПК 4.4</strong> Обеспечение защиты ПО программными средствами.</div>
+                    <div class="comp-line"><strong>ПК 11.1</strong> Сбор, обработка и анализ информации для
+                        проектирования БД.</div>
+                    <div class="comp-line"><strong>ПК 11.2</strong> Проектирование БД на основе анализа предметной
+                        области.</div>
+                    <div class="comp-line"><strong>ПК 11.3</strong> Разработка объектов БД.</div>
+                    <div class="comp-line"><strong>ПК 11.4</strong> Реализация БД в конкретной СУБД.</div>
+                    <div class="comp-line"><strong>ПК 11.5</strong> Администрирование баз данных.</div>
+                    <div class="comp-line"><strong>ПК 11.6</strong> Защита информации в БД.</div>
+                    <div class="comp-line"><strong>ДПК 2.1</strong> UML, MVC, фреймворки.</div>
+                    <div class="comp-line"><strong>ДПК 2.2</strong> Система контроля версий.</div>
+                </div>
+            </section>
+
+            <section id="know" class="section-dark">
+                <div class="split-zone">
+                    <div class="info-block">
+                        <h3>Знания</h3>
+                        <ul class="custom-list">
+                            <li>Основные этапы разработки ПО</li>
+                            <li>Системы управления базами данных</li>
+                            <li>Git, системы контроля версий</li>
+                            <li>Оформление документации</li>
+                            <li>ООП</li>
+                        </ul>
+                    </div>
+                    <div class="info-block">
+                        <h3>Умения</h3>
+                        <ul class="custom-list">
+                            <li>Работа по ТЗ и предложение собственных решений</li>
+                            <li>Коммуникация с заказчиком и уточнение требований</li>
+                            <li>Тестирование интеграции и отладка</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+
+            <section id="qual" class="section-dark">
+                <h2 class="section-title-dark">О себе</h2>
+                <div class="badges-wrap">
+                    <div class="chip">Я целеустремленный и организованный человек, умею работать в режиме многозадачности, сохраняя внимание к мелким деталям. Также я открыт к обратной связи и всегда стремлюсь стать лучше.</div>
+                </div>
+            </section>
+
+
+            <section id="works" class="section-dark">
+                <h2 class="section-title-dark">Мои работы</h2>
+                <div class="projects-row-dark">
+                    <a href="https://github.com/Fretoss/BCFRETOS.git" target="_blank" class="project-tile">
+                        <h3>Сайт баскетбольного клуба</h3>
+                    </a>
+                </div>
+            </section>
+
+            <section id="exp" class="section-dark">
+                <h2 class="section-title-dark">Опыт работы</h2>
+                <div class="info-block" style="margin-top: 10px;">
+                    <div style="display: flex; flex-wrap: wrap; gap: 16px;">
+                        <span class="chip">Я имею опыт работы в Visual Studio, Android Studio, VS Code, MS SQL Server и PyCharm</span>
+                    </div>
+                </div>
+            </section>
+
+            <section id="achieve" class="section-dark">
+                <h2 class="section-title-dark">Достижения</h2>
+                <div class="grid-gallery">
+                    <div class="gallery-card-dark">
+                        <div class="img-area"><img src="sert.jpg" alt="серт"></div>
+                        <p>Сертификат — сдача финансового зачета</p>
+                    </div>
+                    <div class="gallery-card-dark">
+                        <div class="img-area"><img src="no_corrupt.jpg" alt="плакат"></div>
+                        <p>Конкурс плакатов "СКАЖЕМ КОРРУПЦИИ — НЕТ!"</p>
+                    </div>
+                    <div class="gallery-card-dark">
+                        <div class="img-area"><img src="pr32.jpg" alt="плакат"></div>
+                        <p>Конкурс видеороликов - "День здоровья"</p>
+                    </div>
+                </div>
+            </section>
+
+
+            <section id="docs" class="section-dark">
+                <h2 class="section-title-dark">Документы</h2>
+                <div class="grid-gallery">
+                    <div class="gallery-card-dark">
+                        <div class="img-area"><img src="s1.jpg" alt="диплом"></div>
+                        <p>Диплом 3 место — первенство Пермского края по подводному спорту</p>
+                    </div>
+                    <div class="gallery-card-dark">
+                        <div class="img-area"><img src="s2.jpg" alt="грамота"></div>
+                        <p>2 место — первенство г.о. Заречный по подводному спорту</p>
+                    </div>
+                    <div class="gallery-card-dark">
+                        <div class="img-area"><img src="s3.jpg" alt="грамота"></div>
+                        <p>3 место — первенство Березовского городского округа</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="citizen" class="section-dark">
+                <h2 class="section-title-dark">Я — гражданин</h2>
+                <div class="grid-gallery">
+                    <div class="gallery-card-dark">
+                        <div class="img-area"><img src="diplom3.jpg" alt="диплом"></div>
+                        <p>Диплом 3 место — онлайн викторина "По страницам истории"</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+</body>
+
+</html>
